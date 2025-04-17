@@ -1,4 +1,4 @@
-package sn.isi.javafx.diti4_db_java_fx.model;
+package src.main;
 
 
 import javax.persistence.EntityManagerFactory;
