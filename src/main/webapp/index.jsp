@@ -1,11 +1,8 @@
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <body>
-<%@page import="java.util.*, src.main.Model.Personne" %>
-
-<%
-List<Personne> list = (List<Personne>) request.getAttribute("personnes");
-%>
-
+<a href="personne?action=add">Add</a>
 <table border="1" width="90%">
     <tr>
         <th>Id</th>
@@ -14,18 +11,17 @@ List<Personne> list = (List<Personne>) request.getAttribute("personnes");
         <th>Age</th>
     </tr>
 
-    <%
-      for(Personne p : list){
-    %>
+ <c:forEach items="${personnes}" var="p">
         <tr>
-            <td> <%=  p.getId()  %>   </td>
-            <td> <%=  p.getNom()  %>    </td>
-            <td> <%=  p.getPrenom()  %>    </td>
-            <td> <%=  p.getAge()  %>    </td>
+            <td>${p.id} </td>
+            <td> ${ p.getNom() }    </td>
+            <td> ${ p.getPrenom() }    </td>
+            <td> ${ p.getAge()  }   </td>
+             <td>
+               <a href="?action=delete&id=${p.id}">delete</a>
+             </td>
         </tr>
-    <%
-    }
-    %>
+  </c:forEach>
 </table>
 </body>
 </html>
